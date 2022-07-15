@@ -18,7 +18,7 @@ sign = blueprints.Blueprint("sign", __name__)
 
 @sign.route("/signup", methods=["GET"])
 def signup():
-    return render_template("auth/signup.html")
+    return render_template("auth/signup.html", title="Sign Up")
 
 
 @sign.route("/signup", methods=["POST"])
@@ -38,7 +38,7 @@ def signup_post():
 
 @sign.route("/signin", methods=["GET"])
 def signin():
-    return render_template("auth/signin.html")
+    return render_template("auth/signin.html", title="Sign In")
 
 
 @sign.route("/signup", methods=["POST"])
