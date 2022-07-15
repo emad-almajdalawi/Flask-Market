@@ -1,0 +1,37 @@
+{% extends "main/base.html" %}
+
+{% block title %} Home {% endblock %}
+
+{% block body %}
+
+<header>
+    <h2>Welcome to Flask Market</h2>
+    <p>This is home page</p>
+</header>
+
+<div class="hero">
+    <p>Flasky, where the trust could be found</p>
+    <div class="hero-galary">
+        <a href="https://www.google.com/">
+            <img src="https://via.placeholder.com/150/0000FF/808080?Text=product" alt="placeholder image"
+                class="img-galary" />
+        </a>
+        <a href="https://www.google.com/">
+            <img src="https://via.placeholder.com/150/0000FF/808080?Text=product" alt="placeholder image"
+                class="img-galary" />
+        </a>
+        <a href="https://www.google.com/">
+            <img src="https://via.placeholder.com/150/0000FF/808080?Text=product" alt="placeholder image"
+                class="img-galary" />
+        </a>
+    </div>
+</div>
+
+<div class="explore-more">
+    <p>Liked it?</p>
+    <a href="{{ url_for('main.market') }}">
+        <button class="btn-primary">Explore more</button>
+    </a>
+</div>
+
+{% endblock %}
