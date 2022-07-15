@@ -1,0 +1,7 @@
+{% macro auth_link(logedIn) %}
+{% if logedIn %}
+<li><a href="{{ url_for(auth.signin) }}">LogIn</a></li>
+{% else %}
+<li><a href="{{ url_for(auth.signout) }}">Sign out</a></li>
+{% endif %}
+{% endmacro %}

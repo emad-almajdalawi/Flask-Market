@@ -1,3 +1,5 @@
+{% from "main/macros.html" import nav_link with context %}.
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,9 +18,12 @@
             <h1>Flask Market</h1>
         </div>
         <ul class="navList">
-            <li><a href="{{ url_for('main.home') }}">Home</a></li>
+            {{ nav_link('main.home', 'Home') }}
+            {{ nav_link('main.about', 'About') }}
+            {{ nav_link('main.market', 'Market') }}
+            <!-- <li><a href="{{ url_for('main.home') }}">Home</a></li>
             <li><a href="{{ url_for('main.market') }}">Market</a></li>
-            <li><a href="{{ url_for('main.about') }}">About</a></li>
+            <li><a href="{{ url_for('main.about') }}">About</a></li> -->
         </ul>
         <div class="profile">
             <ul class="profileList">
