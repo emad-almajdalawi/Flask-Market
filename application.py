@@ -2,24 +2,18 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import os
 
-db = SQLAlchemy()
 
+template_dir = os.path.join(os.path.dirname(__name__), "templates")
+app = Flask(__name__, template_folder=template_dir)
 
-def create_app():
-    template_dir = os.path.join(os.path.dirname(__name__), "templates")
-    app = Flask("Flask-Market", template_folder=template_dir)
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite3"
+db = SQLAlchemy(app)
 
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite3"
+# with app.app_context():
+#     db.create_all()
 
-    db.init_app(app)
+from auth.views import sign
+from main.views import main
 
-    with app.app_context():
-        db.create_all()
-
-    from auth.views import sign
-    from main.views import main
-
-    app.register_blueprint(sign)
-    app.register_blueprint(main)
-
-    return app
+app.register_blueprint(sign)
+app.register_blueprint(main)
