@@ -41,7 +41,7 @@ def signin():
     return render_template("auth/signin.html", title="Sign In")
 
 
-@sign.route("/signup", methods=["POST"])
+@sign.route("/signin", methods=["POST"])
 def signin_post():
     name = request.POST.get("name")
     email = request.form.get("email")

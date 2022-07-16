@@ -70,4 +70,12 @@
     </div>
 </div>
 
-{% endblock %}
+<div class="products-list">
+    {% for product in products %}
+    <div class="product-item">
+        <h3>{{product.name}}</h3>
+        <p>{{product.description}}</p>
+        <p>{{product.price}}</p>
+    </div>
+    {% endfor %}
+    {% endblock %}

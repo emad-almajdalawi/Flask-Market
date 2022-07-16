@@ -18,6 +18,3 @@ class User(db.Model):
 
     def __str__(self):
         return "User %r" % self.name
-
-    def __unicode__(self):
-        return "User %r" % self.name
