@@ -1,6 +1,6 @@
 from wsgiref.validate import validator
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, EmailField
+from wtforms import StringField, PasswordField, SubmitField, EmailField, BooleanField
 from wtforms.validators import Length, EqualTo, DataRequired, ValidationError
 from auth.models import User
 
@@ -22,6 +22,7 @@ class SignupForm(FlaskForm):
     password2 = PasswordField(
         "Repeat Password", validators=[EqualTo("password"), DataRequired()]
     )
+    seller = BooleanField("Seller", default=False)
     submit = SubmitField("Signup")
 
 
