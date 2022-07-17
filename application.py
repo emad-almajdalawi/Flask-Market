@@ -1,3 +1,7 @@
+# this file could be renamed to be (__init__.py) to make the project a package
+# then create run.py file to run the app and put in it (app.run(debug=True))
+# also template files could be moved inside each blueprint folder (auth and main)
+
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import os
@@ -17,3 +21,6 @@ from main.views import main
 
 app.register_blueprint(sign)
 app.register_blueprint(main)
+
+
+app.secret_key = "super secret key"

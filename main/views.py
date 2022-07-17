@@ -12,8 +12,9 @@ from application import db
 
 main = blueprints.Blueprint("main", __name__)
 
-global products
-products = Product.query.all()
+if Product:
+    global products
+    products = Product.query.all()
 
 
 @main.route("/", methods=["GET"])
@@ -38,15 +39,16 @@ def market_add():
 
 @main.route("/market/add", methods=["POST"])
 def market_add_post():
-    name = request.form.get("name")
+    title = request.form.get("title")
     price = request.form.get("price")
     description = request.form.get("description")
+    owner = request.form.get("owner")
 
-    if not name or not price:
+    if not title or not price:
         flash("Please fill all fields")
         return redirect(url_for("main.market_add"))
 
-    new_product = Product(name, price, description)
+    new_product = Product(title, price, description, owner)
     db.session.add(new_product)
     db.session.commit()
 

@@ -23,14 +23,14 @@ def signup():
 
 @sign.route("/signup", methods=["POST"])
 def signup_post():
-    name = request.form.get("name")
+    username = request.form.get("username")
     email = request.form.get("email")
     password = request.form.get("password")
     if not name or not email or not password:
         flash("Please fill all fields")
         return redirect(url_for("sign.signup_post"))
 
-    new_user = User(name, email, password)
+    new_user = User(username, email, password)
     db.session.add(new_user)
     db.session.commit()
     return redirect(url_for("sign.signin"))
