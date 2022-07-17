@@ -11,6 +11,7 @@ from flask import (
 )
 from auth.models import User
 from application import db
+from auth.forms import SignupForm, LoginForm
 
 
 sign = blueprints.Blueprint("sign", __name__)
@@ -18,7 +19,8 @@ sign = blueprints.Blueprint("sign", __name__)
 
 @sign.route("/signup", methods=["GET"])
 def signup():
-    return render_template("auth/signup.html", title="Sign Up")
+    form = SignupForm()
+    return render_template("auth/signup.html", title="Sign Up", form=form)
 
 
 @sign.route("/signup", methods=["POST"])
@@ -35,10 +37,16 @@ def signup_post():
     db.session.commit()
     return redirect(url_for("sign.signin"))
 
+    # form = SignupForm(request.form)
+    # if not form.validate():
+    #     flash("Please fill all fields")
+    #     return redirect(url_for("sign.signup_post"))
+
 
 @sign.route("/signin", methods=["GET"])
 def signin():
-    return render_template("auth/signin.html", title="Sign In")
+    form = LoginForm()
+    return render_template("auth/signin.html", title="Sign In", form=form)
 
 
 @sign.route("/signin", methods=["POST"])
