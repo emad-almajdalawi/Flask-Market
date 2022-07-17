@@ -26,8 +26,10 @@
 <div class="login-container">
     <div class="login-form">
         <form action="{{ url_for('sign.signin') }}" method="post">
-            {{ form.email.label }}
-            {{ form.email(class='form-control') }}
+            {{ form.hidden_tag() }}
+
+            {{ form.username.label }}
+            {{ form.username(class='form-control') }}
             {{ form.password.label }}
             {{ form.password(class='form-control') }}
             {{ form.submit(class='btn btn-primary') }}

@@ -18,12 +18,26 @@
             <li><a href="{{ url_for('sign.signin') }}">LogIn</a></li>
             <li><a href="{{ url_for('sign.signup') }}">Sign Up</a></li>
         </ul>
+    </nav>
 
-        <div class="body">
-
-            {% block body %} {% endblock body %}
-
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="flash">
+        {% for category, msg in messages %}
+        <div class="flash-{{ category }}">
+            {{ msg }}
+            <button type="button" class="btn btn-close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <div class="body">
+        {% block body %} {% endblock body %}
+    </div>
 
 </body>
 
